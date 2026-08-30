@@ -1,7 +1,7 @@
 ---
 spec_uri: >-
   https://raw.githubusercontent.com/pinterest/api-description/refs/tags/v5.28.0/v5/openapi.yaml
-version: 2.0.1-pre.0
+version: 2.1.0
 contact:
   name: OpenAPI Clients Factory
   url: https://github.com/oapicf/pinterest-sdk
@@ -14,13 +14,15 @@ base_dir:
   local: /Users/cliffano/dev/workspace-oapicf/pinterest-sdk
   custom: >-
     /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
-generators_extra_args: --global-property modelTests=false
+generators_extra_args: '--global-property modelTests=false'
 generator:
   component: oag-file-spec
   inputs:
     project_id: pinterest-sdk
     project_name: Pinterest SDK
-    project_desc: A set of generated client libraries for Pinterest REST API from their OpenAPI v3 specification
+    project_desc: >-
+      A set of generated client libraries for Pinterest REST API from their
+      OpenAPI v3 specification
     author_name: OpenAPI Clients Factory
     author_email: blah+oapicf@cliffano.com
     author_url: https://github.com/oapicf
