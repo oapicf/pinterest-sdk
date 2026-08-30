@@ -1,6 +1,6 @@
 {
     "artifactId": "pinterestsdk",
-    "artifactVersion": "1.0.0-pre.0",
+    "artifactVersion": "2.0.1-pre.0",
     "artifactUrl": "https://github.com/oapicf/pinterest-sdk",
     "artifactDescription": "Pinterest SDK generated from OpenAPI specification",
     "groupId": "com.github.oapicf",
