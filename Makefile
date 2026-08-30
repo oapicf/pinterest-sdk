@@ -4,7 +4,7 @@
 ################################################################
 
 # Swaggy C info
-SWAGGY_C_VERSION = 6.6.0
+SWAGGY_C_VERSION = 6.6.0-modelTestFalse
 
 # The version of OpenAPI Generator (https://openapi-generator.tech/) used for generating the API clients
 OPENAPI_GENERATOR_VERSION = 7.24.0
@@ -177,6 +177,7 @@ generate-primary:
 		  --input-spec /local/$(LOCAL_SPEC_PATH) \
 		  --config /local/clients/$$generator/conf.json \
 		  --generator-name $$generator \
+		  --global-property modelTests=false \
 		  --output /local/clients/$$generator/generated; \
 	done
 	$(call run_hook,x-post-generate-primary)
