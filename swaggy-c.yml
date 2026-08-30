@@ -14,6 +14,7 @@ base_dir:
   local: /Users/cliffano/dev/workspace-oapicf/pinterest-sdk
   custom: >-
     /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
+generators_extra_args: --global-property modelTests=false
 generator:
   component: oag-url-spec
   inputs:
