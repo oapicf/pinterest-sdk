@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fix Javascript generation error due to AdsAnalyticsCreateAsyncRequest.campaign_objective_types
+- Fix Javascript generation error due to unsupported anyOf
 
 ## 2.0.0 - 2026-01-31
 ### Added
