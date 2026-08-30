@@ -16,7 +16,7 @@ base_dir:
     /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
 generators_extra_args: --global-property modelTests=false
 generator:
-  component: oag-url-spec
+  component: oag-file-spec
   inputs:
     project_id: pinterest-sdk
     project_name: Pinterest SDK
