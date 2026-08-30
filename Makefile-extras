@@ -1,14 +1,10 @@
+x-post-init-spec:
+	# Pinterest's spec omits `items` on AdsAnalyticsCreateAsyncRequest.campaign_objective_types
+	# (a `type: array` property with no items schema), which openapi-generator's spec
+	# validation rejects with "attribute ...campaign_objective_types.items is missing".
+	# The property name and description (WEB_SESSIONS etc.) match the existing
+	# CampaignObjectiveType enum used elsewhere in the spec for the singular field, so
+	# that's what's filled in here.
+	yq -i '.components.schemas.AdsAnalyticsCreateAsyncRequest.properties.campaign_objective_types.items = {"$$ref": "#/components/schemas/CampaignObjectiveType"}' stage/specification.yml
 
-# Disabled Javascript build
-# due to https://github.com/oapicf/pinterest-sdk/issues/2
-# and further issues
-x-build-javascript:
-	npm install -g babel-cli
-# 	cd clients/javascript/generated/ && \
-# 	  npm install && \
-# 	  npm link && \
-# 	  npm run build
-# 	cd test/javascript/ && \
-# 	  npm link ../../clients/javascript/generated/
-
-.PHONY: x-build-javascript
+.PHONY: x-post-init-spec
