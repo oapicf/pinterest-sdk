@@ -15,5 +15,14 @@ x-post-init-spec:
 	# synthesized (and broken) named model. Sibling numeric fields in the same schema
 	# (retention_days, engager_type) are plain `integer`, so this follows that.
 	yq -i 'del(.components.schemas.AdAccountsAudienceRule.properties.percentage.anyOf) | .components.schemas.AdAccountsAudienceRule.properties.percentage.type = "integer"' stage/specification.yml
+	# Same javascript anyOf limitation as percentage above, for the other two
+	# inline-anyOf properties on the same schema. AudienceRule (a separate, sibling
+	# schema used elsewhere in the spec) has non-anyOf seed_id/visitor_source_id
+	# properties with the same names and descriptions -- used as the resolved types
+	# here rather than guessing: seed_id -> array of string (AudienceRule's version
+	# has a string-array example), visitor_source_id -> string (AudienceRule's
+	# version has pattern ^\d+$$).
+	yq -i 'del(.components.schemas.AdAccountsAudienceRule.properties.seed_id.anyOf) | .components.schemas.AdAccountsAudienceRule.properties.seed_id.type = "array" | .components.schemas.AdAccountsAudienceRule.properties.seed_id.items = {"type": "string"}' stage/specification.yml
+	yq -i 'del(.components.schemas.AdAccountsAudienceRule.properties.visitor_source_id.anyOf) | .components.schemas.AdAccountsAudienceRule.properties.visitor_source_id.type = "string"' stage/specification.yml
 
 .PHONY: x-post-init-spec
